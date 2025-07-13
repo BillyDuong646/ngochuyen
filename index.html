@@ -142,7 +142,9 @@
         "Anh thích nụ cười này 😚",
         "Giới thiệu cho anh người này đi 😏"
       ];
-      mainText.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+      let phraseIndex = 0;
+      mainText.textContent = phrases[phraseIndex % phrases.length];
+      phraseIndex++;
     }
   </script>
 </body>

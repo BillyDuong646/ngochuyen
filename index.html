@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Món Quà Nhỏ 💝</title>
+  <title>Món Quà Bí Ẩn 💌</title>
   <style>
     body {
       background: linear-gradient(to right, #ffe6f0, #fff0f5);
@@ -22,6 +22,7 @@
       font-size: 24px;
       color: #ff4081;
       margin-bottom: 20px;
+      z-index: 2;
     }
 
     button {
@@ -41,20 +42,20 @@
       background-color: #ff1493;
     }
 
-    img {
+    #crush-img {
       width: 180px;
       height: auto;
       border-radius: 50%;
-      margin-bottom: 20px;
+      margin-top: 20px;
       box-shadow: 0 0 20px 5px #ff99cc;
-      animation: pulse 2s infinite;
+      display: none;
+      animation: fadeIn 2s ease-in-out forwards;
       z-index: 2;
     }
 
-    @keyframes pulse {
-      0% { box-shadow: 0 0 20px 5px #ff99cc; }
-      50% { box-shadow: 0 0 25px 10px #ff66b2; }
-      100% { box-shadow: 0 0 20px 5px #ff99cc; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .heart {
@@ -63,9 +64,7 @@
       height: 20px;
       background: red;
       transform: rotate(45deg);
-      animation: floatUp 3s ease-in-out forwards;
-      top: 100%;
-      left: 50%;
+      animation: floatUp 5s ease-in-out infinite;
       opacity: 0.8;
     }
 
@@ -102,29 +101,32 @@
   </style>
 </head>
 <body>
-  <audio id="bg-music" src="background-music.mp3" autoplay loop></audio>
-  <img src="crush-anime.jpg" alt="Crush dễ thương" />
-  <h1>🎁 Nhấn thử xem điều gì xảy ra...</h1>
-  <button onclick="playLaugh()">Bấm vào đây 😆</button>
-  <audio id="laugh" src="crush-laugh.mp3"></audio>
+  <h1>🎁 Tớ có một điều bất ngờ nè...</h1>
+  <button onclick="startSurprise()">Bấm vào đây 😆</button>
+  <img id="crush-img" src="crush-anime.jpg" alt="Crush dễ thương">
+  <audio id="bg-music" src="background-music.mp3"></audio>
 
   <script>
-    function playLaugh() {
-      const audio = document.getElementById("laugh");
-      audio.play();
+    function startSurprise() {
+      // Phát nhạc
+      const music = document.getElementById("bg-music");
+      music.play();
 
-      for (let i = 0; i < 30; i++) {
+      // Hiện ảnh crush
+      const img = document.getElementById("crush-img");
+      img.style.display = "block";
+
+      // Bắt đầu tạo trái tim liên tục
+      setInterval(() => {
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
-        heart.style.animationDelay = (Math.random() * 1) + 's';
         document.body.appendChild(heart);
-
         setTimeout(() => {
           heart.remove();
-        }, 3000);
-      }
+        }, 5000);
+      }, 300); // Mỗi 0.3 giây tạo một trái tim
     }
   </script>
 </body>

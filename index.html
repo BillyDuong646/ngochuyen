@@ -142,9 +142,9 @@
         "Anh thích nụ cười này 😚",
         "Giới thiệu cho anh người này đi 😏"
       ];
-      let phraseIndex = 0;
-      mainText.textContent = phrases[phraseIndex % phrases.length];
-      phraseIndex++;
+      window.phraseIndex = (typeof window.phraseIndex === 'undefined') ? 0 : window.phraseIndex;
+mainText.textContent = phrases[window.phraseIndex % phrases.length];
+window.phraseIndex++;
     }
   </script>
 </body>

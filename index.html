@@ -15,6 +15,7 @@
       height: 100vh;
       margin: 0;
       text-align: center;
+      overflow: hidden;
     }
 
     h1 {
@@ -44,11 +45,19 @@
       height: auto;
       border-radius: 50%;
       margin-bottom: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 20px 5px #ff99cc;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 20px 5px #ff99cc; }
+      50% { box-shadow: 0 0 25px 10px #ff66b2; }
+      100% { box-shadow: 0 0 20px 5px #ff99cc; }
     }
   </style>
 </head>
 <body>
+  <audio id="bg-music" src="background-music.mp3" autoplay loop></audio>
   <img src="crush-anime.jpg" alt="Crush dễ thương" />
   <h1>🎁 Nhấn thử xem điều gì xảy ra...</h1>
   <button onclick="document.getElementById('laugh').play()">Bấm vào đây 😆</button>

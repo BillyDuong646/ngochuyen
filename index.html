@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Món Quà Nhỏ 💝</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffe6f0, #fff0f5);
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #ff4081;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    img {
+      width: 180px;
+      height: auto;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <img src="crush-anime.jpg" alt="Crush dễ thương" />
+  <h1>🎁 Nhấn thử xem điều gì xảy ra...</h1>
+  <button onclick="document.getElementById('laugh').play()">Bấm vào đây 😆</button>
+  <audio id="laugh" src="crush-laugh.mp3"></audio>
+</body>
+</html>

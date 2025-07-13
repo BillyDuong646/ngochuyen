@@ -3,30 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Món Quà Bí Mật 💝</title>
+  <title>Món Quà Bí Mật 💕</title>
   <style>
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background: linear-gradient(to right, #ffe6f0, #fff0f5);
       font-family: "Segoe UI", sans-serif;
-      margin: 0; padding: 0;
       overflow: hidden;
-      position: relative;
       height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      position: relative;
     }
 
     h1 {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       font-size: 24px;
       color: #ff4081;
-      margin-bottom: 20px;
       z-index: 2;
     }
 
     button {
+      position: absolute;
       background-color: #ff69b4;
       color: white;
       border: none;
@@ -35,8 +34,8 @@
       border-radius: 30px;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s;
-      z-index: 2;
+      transition: all 0.4s ease-in-out;
+      z-index: 3;
     }
 
     button:hover {
@@ -44,19 +43,21 @@
     }
 
     #crush-img {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
       width: 180px;
-      height: auto;
       border-radius: 50%;
-      margin-top: 20px;
       box-shadow: 0 0 20px 5px #ff99cc;
+      animation: floatImg 3s ease-in-out infinite;
       display: none;
-      animation: fadeIn 2s ease-in-out forwards;
       z-index: 2;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+    @keyframes floatImg {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
     }
 
     .heart {
@@ -90,31 +91,27 @@
   </style>
 </head>
 <body>
-  <h1>💌 Tớ có điều muốn em biết...</h1>
-  <button onclick="startLove()">Bấm vào đây 😆</button>
+  <h1 id="main-text">💌 Tớ có điều muốn em biết...</h1>
+  <button id="love-btn" onclick="startLove()">Bấm vào đây 😆</button>
   <img id="crush-img" src="crush-anime.jpg" alt="Crush dễ thương">
-
-  <!-- Nhạc nền -->
   <audio id="bg-music" src="background-music.mp3" autoplay loop></audio>
-
-  <!-- Hai tiếng cười -->
   <audio id="laugh1" src="laugh1.mp3"></audio>
   <audio id="laugh2" src="laugh2.mp3"></audio>
 
   <script>
     let hasStarted = false;
+    const btn = document.getElementById("love-btn");
+    const mainText = document.getElementById("main-text");
 
     function startLove() {
       const music = document.getElementById("bg-music");
       const img = document.getElementById("crush-img");
-
       music.volume = 0.2;
       music.play();
 
+      // Show image once
       if (!hasStarted) {
         img.style.display = "block";
-        hasStarted = true;
-
         setInterval(() => {
           const heart = document.createElement("div");
           heart.classList.add("heart");
@@ -124,12 +121,30 @@
           document.body.appendChild(heart);
           setTimeout(() => heart.remove(), 5000);
         }, 100);
+        hasStarted = true;
       }
 
+      // Play random laugh
       const laughs = [document.getElementById("laugh1"), document.getElementById("laugh2")];
       const randomLaugh = laughs[Math.floor(Math.random() * laughs.length)];
       randomLaugh.currentTime = 0;
       randomLaugh.play();
+
+      // Move button to random position
+      const x = Math.random() * 80;
+      const y = Math.random() * 80;
+      btn.style.top = y + "%";
+      btn.style.left = x + "%";
+
+      // Change text content
+      const phrases = [
+        "Bấm tiếp đi nè! 😍",
+        "Thêm một lần nhé! 🥰",
+        "Hihi, nhấn tiếp đi em! 😜",
+        "Vẫn chưa hết đâu! 🤪",
+        "Em cười xinh lắm 🤩"
+      ];
+      mainText.textContent = phrases[Math.floor(Math.random() * phrases.length)];
     }
   </script>
 </body>

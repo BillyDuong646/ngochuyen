@@ -123,8 +123,10 @@
         hasStarted = true;
       }
 
-      const laughs = [document.getElementById("laugh1"), document.getElementById("laugh2")];
-      const randomLaugh = laughs[Math.floor(Math.random() * laughs.length)];
+   // Play random laugh
+      const laugh1 = document.getElementById("laugh1");
+const laugh2 = document.getElementById("laugh2");
+const randomLaugh = Math.random() < 0.7 ? laugh1 : laugh2;
       randomLaugh.currentTime = 0;
       randomLaugh.play();
 

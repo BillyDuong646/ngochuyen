@@ -26,6 +26,9 @@
 
     button {
       position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       background-color: #ff69b4;
       color: white;
       border: none;
@@ -36,10 +39,6 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       transition: all 0.4s ease-in-out;
       z-index: 3;
-    }
-
-    button:hover {
-      background-color: #ff1493;
     }
 
     #crush-img {
@@ -65,7 +64,7 @@
       width: 20px;
       height: 20px;
       background: red;
-      bottom: -40px; /* Bắt đầu từ dưới đáy màn hình */
+      bottom: -40px;
       transform: rotate(45deg);
       animation: floatUp 6s linear forwards;
       opacity: 0.8;
@@ -133,6 +132,7 @@
       const y = Math.random() * 80;
       btn.style.top = y + "%";
       btn.style.left = x + "%";
+      btn.style.transform = "translate(-50%, -50%)";
 
       const phrases = [
         "Bấm tiếp đi nè! 😍",
@@ -140,7 +140,7 @@
         "Hihi, nhấn tiếp đi em! 😜",
         "Vẫn chưa hết đâu! 🤪",
         "Anh thích nụ cười này 😚",
-        "Giới thiệu cho anh người có nụ cười này 😏",
+        "Giới thiệu cho anh người này đi 😏"
       ];
       mainText.textContent = phrases[Math.floor(Math.random() * phrases.length)];
     }
